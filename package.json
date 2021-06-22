@@ -1,4 +1,32 @@
 {
-  "name": "md-links",
-  "version": "0.1.0"
+  "name": "@vaneluuq/md-links",
+  "version": "0.1.0",
+  "description": "md-links busca validar los links en archivos markdown",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vaneluuq/BOG002-md-links.git"
+  },
+  "keywords": [
+    "markdown",
+    "links",
+    "validate"
+  ],
+  "author": "Vanessa Zuñiga <bersiva@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vaneluuq/BOG002-md-links/issues"
+  },
+  "homepage": "https://github.com/Vaneluuq/BOG002-md-links#readme",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "jest": "^27.0.4"
+  },
+  "dependencies": {}
 }
