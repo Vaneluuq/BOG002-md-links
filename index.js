@@ -4,39 +4,55 @@
 
 const path = require('path');
 const fs = require('fs');
+const markdownLinkExtractor = require('markdown-link-extractor');
 
-let absolutePathFuntion = (pathUser) => {
-  if (path.isAbsolute(pathUser)) {
-    getFile(pathUser)
-  }else{
-    let currentPath = path.resolve(pathUser)
-    getFile(currentPath)
-  }
-}
 
-let getFile = (pathAbsolute) => {
+// Se verifica si la ruta es abosluta o relativa
+let absolutePathFuntion = (pathUser) => (path.isAbsolute(pathUser) ? pathUser : path.resolve(pathUser));
+
+// Se lee el documento md primero identificando si es un archivo o un directorio
+let readFiles = (pathUser) => {
+  const pathAbsolute= absolutePathFuntion(pathUser) 
   let arrayMdFiles = [];
-    if(fs.lstatSync(pathAbsolute).isFile()){
+    if(fs.lstatSync(pathAbsolute).isFile()){    
       if(path.extname(pathAbsolute) == ".md"){
-          arrayMdFiles.push(fs.readFileSync(pathAbsolute, "utf8"))
-          console.log("si hay un archivo md")
-       }else {
-        console.log("no hay un archivo de tipo '.md'") 
-      }
+          arrayMdFiles.push({data: fs.readFileSync(pathAbsolute, "utf8"), route: pathAbsolute});
+       }
     }else{
       let files = fs.readdirSync(pathAbsolute)
-      files.forEach(file => {
-        // absolutePathFuntion(file)
-       let absolutePath = path.join(pathAbsolute, file)
-      //  getFile(absolutePath)
-       absolutePathFuntion(absolutePath)
+      files.map(file => {
+       let absolutePathFiles = path.join(pathAbsolute, file)
+       const allFilesMd = readFiles(absolutePathFiles);
+       arrayMdFiles = arrayMdFiles.concat(allFilesMd)
       });
    };
-   console.log(arrayMdFiles)
+  return arrayMdFiles;
 };
 
 
-absolutePathFuntion("README.md")
+// se obtienen los links del archivo 
+const getLinks = (pathMd) => {
+  let objLinks = [];
+  let filesMdArray = readFiles(pathMd)
+  filesMdArray.forEach((file) => {
+   const links = markdownLinkExtractor(file.data, true);
+    links.forEach(link =>{   
+      objLinks.push({
+        href: link,
+        text: link.text,
+        file: file.route
+        })
+     });
+   })
+  console.log(objLinks)
+};
+
+getLinks("directorio")
+
+
+
+
+
 
 
 
