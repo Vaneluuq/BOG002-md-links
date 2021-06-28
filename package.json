@@ -29,6 +29,7 @@
     "jest": "^27.0.4"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "markdown-link-extractor": "^1.3.0"
   }
 }
