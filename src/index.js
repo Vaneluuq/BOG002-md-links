@@ -9,16 +9,15 @@ let absolutePathFunction = (pathUser) => (path.isAbsolute(pathUser) ? pathUser :
 
 // Se lee el documento md primero identificando si es un archivo o un directorio
 let readFiles = (pathAbsolute) => {
-  // const pathAbsolute= absolutePathFunction(pathUser);
   let arrayMdFiles = [];
     if(fs.lstatSync(pathAbsolute).isFile()){    
       if(path.extname(pathAbsolute) == ".md"){
           arrayMdFiles.push(
             {data: fs.readFileSync(pathAbsolute, "utf8"), 
             route: pathAbsolute});
-      }else{
-        console.log("No hay archivo .md")
-      }
+        }else{
+          new Error("the file md does not exist")
+        }
     }else{
       let files = fs.readdirSync(pathAbsolute);
       files.map(file => {
@@ -27,11 +26,10 @@ let readFiles = (pathAbsolute) => {
        arrayMdFiles = arrayMdFiles.concat(allFilesMd);
       });
    };
-  //  console.log(arrayMdFiles)
   return arrayMdFiles;
 };
 
-
+// se obtienen los links de el archivo(s) .md y su data(href, text, route) 
   const getLinks = (pathMd) => {
     let objLinks = [];
     let filesMdArray = pathMd
@@ -47,9 +45,9 @@ let readFiles = (pathAbsolute) => {
      });
     return objLinks;
   };
+   
 
-
-
+//Se genera un promesa mediante la cual se verifica el estado de los links 
 const checkLinks = (arrayLink) => {
     const links = arrayLink
      const arrayObj = links.map((link)=> {
@@ -57,16 +55,17 @@ const checkLinks = (arrayLink) => {
         .get(link.href)
         .then(response => {
           if (response.status >= 200 && response.status < 300) {   //si la respuesta se encuentra en este rango la respuesta es satisfactoria
-           return ({...link, StatusText: response.statusText, Status: response.status})
+           return ({...link, statusText: response.statusText, status: response.status})
           }else{
-           return ({...link, StatusText: "Fail", status: response.status})
+           return ({...link, statusText: "Fail", status: response.status})
           } 
         }) 
         .catch(e => {
-           return ({...link, StatusText: "Fail", status: e.response.status})
+           return ({...link, statusText: "Fail", status: e.response.status})
         });
      });
-     return Promise.all(arrayObj)
+     return arrayObj
+    //  return Promise.all(arrayObj)
    };
 
 
@@ -82,65 +81,18 @@ const mdLinks = (route, {validate}) => {
        res(links)
     }else{
       let links = getLinks(readFileMd);
-      checkLinks(links)
+      Promise.all(checkLinks(links)) 
       .then(obj=> { res(obj)})
-    }
-  })
-}
+      .catch(error => {rej(error)})
+    };
+  });
+};
+
+module.exports= { mdLinks }
 
 
-mdLinks("directorio", { validate: true }) 
+// mdLinks("directorio", { validate: true }) 
 
-
-
-
-// const arrayLinks = [
-//   {
-//     href: 'https://docs.npmjs.com/misc/scri',
-//     text: 'Configuración de npm-scripts',
-//     file: 'C:\\Users\\usuario\\Desktop\\Laboratoria\\BOG002-md-links\\directorio\\read.md'
-//   }, 
-//   {
-//     href: 'https://nodejs.org/docs/latest-v0.10.x/api/modules.html',
-//     text: '(CommonJS)',
-//     file: 'C:\\Users\\usuario\\Desktop\\Laboratoria\\BOG002-md-links\\directorio\\read.md'
-//   },
-//   {
-//     href: 'https://docs.npmjs.com/files/package.json',
-//     text: 'Configuración de package.json.',
-//     file: 'C:\\Users\\usuario\\Desktop\\Laboratoria\\BOG002-md-links\\directorio\\read.md'
-//   }
-// ]
-
-
-// validarLinks(arrayLinks).then(obj=> {
-//   console.log(obj)});
-
-
-
-
-// se obtienen los links del archivo 
-// const getLinks = (pathMd) => {
-//   new Promise ((res, rej)=> {
-//     let objLinks = [];
-//     let filesMdArray = readFiles(pathMd);
-//     if(err){
-//       rej(new Error(`${err.code}, verifica el path`));
-//     }else{
-//       filesMdArray.forEach((file) => {
-//         const links = markdownLinkExtractor(file.data, true);
-//          res(links.forEach(link =>{   
-//            objLinks.push({
-//              href: link.href,
-//              text: link.text,
-//              file: file.route
-//              });
-//           }));
-//         });
-//       }
-//       console.log(objLinks)
-//     })
-//   }
 
 
 
