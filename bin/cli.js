@@ -19,9 +19,9 @@ const welcome = mesaje => {
 
 const cli = (path, options) => {
   const {validate, stats} = options
-  let style1 = chalk.bold.italic.cyan
-  let style2 = chalk.bold.white
-  let style3 = chalk.cyan.bold
+  const style1 = chalk.bold.italic.cyan
+  const style2 = chalk.bold.white
+  const style3 = chalk.cyan.bold
 //el usuario desea validar y obtener estadisticas 
   if(validate && stats){
     mdLinks(path, { validate: true })

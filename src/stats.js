@@ -15,8 +15,7 @@ const statsAndValidate = (linksArray) => {
      const totalLinks = linksArray.length;   //se obtiene el total de links
      const linkArray = linksArray.map((link) => link.href);  //se obtienen el total de links sin repetir
      const uniqueLinks = [...new Set(linkArray)].length;
-     const okLinks = linksArray.filter(link => link.statusText =="OK").length // Se obtiene los links rotos 
-     const brokenLinks = totalLinks - okLinks
+     const brokenLinks = linksArray.filter(link => link.statusText !=="OK").length // Se obtiene los links rotos 
 
   return ({
    Total: totalLinks,
