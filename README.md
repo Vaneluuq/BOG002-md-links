@@ -73,7 +73,7 @@ Total: 3
 Unique: 3
 ```
 
-### Caso 3 (Estadisticas y validación de los links)
+### Caso 4 (Estadisticas y validación de los links)
 Mediante la opcion  `--stats` y `--validate` es posible obtener estadisticas basadas
 en los resultados de la validación, para el caso el numero de links rotos. 
 
@@ -88,11 +88,11 @@ Broken: 1
 
 ### JavaScript
 
-* [ ] Uso de condicionales [(if-else | switch | operador ternario)](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals)
-* [ ] Uso de funciones [(parámetros | argumentos | valor de retorno)](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions)
-* [ ] Manipular arrays[(filter | map | sort | reduce)](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/)
-* [ ] Manipular objects (key | value)
-* [ ] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* [X] Uso de condicionales [(if-else | switch | operador ternario)](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals)
+* [X] Uso de funciones [(parámetros | argumentos | valor de retorno)](https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions)
+* [X] Manipular arrays[(filter | map | sort | reduce)](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/)
+* [X] Manipular objects (key | value)
+* [X] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 | [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export))
 * [ ] Diferenciar entre expression y statements.
 * [ ] Diferenciar entre tipos de datos atómicos y estructurados.
