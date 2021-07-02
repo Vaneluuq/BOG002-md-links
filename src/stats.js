@@ -1,7 +1,6 @@
 //Se obtienen las estadisticas basicas de los links 
-const getStats = () => {
+const getStats = (links) => {
   const totalLinks = links.length;   //se obtiene el total de links
-
   const linkArray = links.map((link) => link.href)  //se obtienen el total de links sin repetir
   const uniqueLinks = [...new Set(linkArray)].length
  
@@ -11,17 +10,13 @@ const getStats = () => {
  });
 };
 
-
-
 // Se obtienen las estadisticas que necesitan de los resultados de la validación. 
-const statsAndValidate = (links) => {
- 
-  const totalLinks = links.length;   //se obtiene el total de links
-
-  const linkArray = links.map((link) => link.href)  //se obtienen el total de links sin repetir
-  const uniqueLinks = [...new Set(linkArray)].length
- 
-  const brokenLinks = links.filter (link => link.statusText !=="OK").length  // Se obtiene los links rotos 
+const statsAndValidate = (linksArray) => {
+     const totalLinks = linksArray.length;   //se obtiene el total de links
+     const linkArray = linksArray.map((link) => link.href);  //se obtienen el total de links sin repetir
+     const uniqueLinks = [...new Set(linkArray)].length;
+     const okLinks = linksArray.filter(link => link.statusText =="OK").length // Se obtiene los links rotos 
+     const brokenLinks = totalLinks - okLinks
 
   return ({
    Total: totalLinks,
@@ -29,6 +24,7 @@ const statsAndValidate = (links) => {
    Broken: brokenLinks
   })
 };
+
  
 module.exports = {
   getStats, 
@@ -52,5 +48,4 @@ module.exports = {
 // });
 
 // console.log(duplicados); // [ 2, 4 ]
-
 
