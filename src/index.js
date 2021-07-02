@@ -91,7 +91,6 @@ const mdLinks = (route, {validate}) => {
 module.exports= { mdLinks }
 
 
-// mdLinks("directorio", { validate: true }) 
 
 
 

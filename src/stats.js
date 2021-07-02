@@ -30,55 +30,11 @@ const statsAndValidate = (links) => {
   })
 };
  
+module.exports = {
+  getStats, 
+  statsAndValidate
+}
 
-
-
-
-
-
-
-
-const data = [
-    {
-        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Gl',
-        text: '(filter | map | sort | reduce)',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
-        statusText: 'OK',
-        status: 200
-      },
-      {
-        href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import',
-        text: '`import`',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
-        statusText: 'OK',
-        status: 200
-      },
-      {
-        href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/e',
-        text: '`export`',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
-        statusText: 'FAIL',
-        status: 200
-      },
-      {
-        href: 'https://docs.npmjs.com/misc/scripts',
-        text: 'Configuración de npm-scripts',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\read.md',
-        statusText: 'OK',
-        status: 200
-      },
-      {
-        href: 'https://docs.npmjs.com/misc/scripts',
-        text: 'Configuración de npm-scripts',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\read.md',
-        statusText: 'OK',
-        status: 200
-      }
-]
-
- stats(data)
-
-// console.log(validLinks(data))
 
 
 
