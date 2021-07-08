@@ -29,11 +29,11 @@ let readFiles = (pathAbsolute) => {
   return arrayMdFiles;
 };
 
+// console.log(readFiles('directorio\\otra\\read.md'))
 // se obtienen los links de el archivo(s) .md y su data(href, text, route) 
   const getLinks = (pathMd) => {
     let objLinks = [];
-    let filesMdArray = pathMd
-    filesMdArray.forEach((file) => {
+    pathMd.forEach((file) => {
      const links = markdownLinkExtractor(file.data, true);
       links.forEach(link =>{   
         objLinks.push({
@@ -88,7 +88,11 @@ const mdLinks = (route, {validate}) => {
   });
 };
 
-module.exports= { mdLinks }
+module.exports= { mdLinks, 
+                  absolutePathFunction, 
+                  readFiles,
+                  getLinks, 
+                  checkLinks}
 
 
 

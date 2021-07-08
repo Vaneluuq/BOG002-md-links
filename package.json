@@ -10,7 +10,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose --coverage",
+    "eslint": "eslint --ext .js src/ test/",
+    "deploy": "gh-pages -d src"
   },
   "repository": {
     "type": "git",
@@ -29,10 +31,12 @@
   "homepage": "https://github.com/Vaneluuq/BOG002-md-links#readme",
   "devDependencies": {
     "eslint": "^7.29.0",
-    "jest": "^27.0.4"
+    "gh-pages": "^3.2.3",
+    "jest": "^27.0.6"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "babel": "^6.23.0",
     "chalk": "^4.1.1",
     "commander": "^8.0.0",
     "markdown-link-extractor": "^1.3.0"
