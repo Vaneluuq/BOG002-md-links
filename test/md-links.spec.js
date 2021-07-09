@@ -1,7 +1,10 @@
 const {mdLinks, absolutePathFunction, readFiles, getLinks, checkLinks } = require('../src/index.js');
 const relativePath = '.';
 const pathPrueba = 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links';
-const mocks = require('./_mocks_.js')
+const mocks = require('./_mocks_.js');
+const axios = require("axios");
+jest.mock('axios');
+
 
 
 describe('absolutePathFunction', () => {
@@ -32,23 +35,18 @@ describe('readfiles', () => {
    const pathPrueba = 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio'
    expect(readFiles(pathPrueba)).toHaveLength(2)
  })
-  // test("la prueba deberia arrojar error si no es un archivo md", () => {
-  //   const pathPrueba = 'C:\Users\Asus\Documents\LABORATORIA\BOG002-md-links\directorio\app.js'
-  //    expect(()=> readFiles(pathPrueba)).toThrowError("the file md does not exist")
-  // })
 })
-
 
 describe('getLinks', () => {
   test('deberia ser una funcion', () => {
     expect(typeof getLinks).toBe('function')
   })
-  test('', () => {
-    expect()
+  test("Deberia retornar un objeto con {href, text, file}", () => {
+    expect(getLinks(mocks.arrayMd)).toEqual(mocks.noValidate)
   })
-  // test("la ruta deberia retornar un objeto", () => {
-  //   expect(typeof getLinks(pathPrueba)).toBe("object")
-  // })
+  test("la ruta deberia ser un objeto", () => {
+    expect(typeof getLinks(mocks.arrayMd)).toBe("object")
+  })
 })
 
 
@@ -56,7 +54,21 @@ describe('checkLinks', () => {
   test('deberia ser una funcion', () => {
     expect(typeof checkLinks).toBe('function')
   })
-})
+  test('deberia responder el status del link', () => {
+     const urlLink = [{href: 'https://nodejs.org/api/path.html'}];
+     const resp = mocks.checkLinksResponse;
+     axios.get.mockResolvedValue(resp)
+      
+     return Promise.all(checkLinks(urlLink)).then(data => expect(data).toEqual([resp]));
+    });
+  test('deberia responder error el status del link', () => {
+    const urlLink = [{href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Stat'}];
+    const resp = mocks.checkLinksResponseFail;
+    axios.get.mockResolvedValue(resp)
+
+    return Promise.all(checkLinks(urlLink)).then(data => expect(data).toEqual([resp]));
+    });
+  });
 
 
 describe('mdLinks', () => {
@@ -67,12 +79,3 @@ describe('mdLinks', () => {
 
 
 
-// import axios from 'axios';
-
-// class Users {
-//   static all() {
-//     return axios.get('/users.json').then(resp => resp.data);
-//   }
-// }
-
-// export default Users;

@@ -14,28 +14,19 @@ const arrayMd = [
     }
   ]
 
+  const checkLinksResponse = {
+    href: 'https://nodejs.org/api/path.html',
+    status: 200,
+    statusText: 'OK'
+  }
 
 
-const directorioArray = [
-    "C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md",
-    "C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\otra\\read.md"
-];
-
-const objetoFail = {
+const checkLinksResponseFail = {
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Stat",
-    text: "import",
-    file: "C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md",
     status: 404,
     statusText: "Fail"
 }
 
-const objetoOk = {
-    href: "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/",
-    text: "(filter | map | sort | reduce)",
-    file: "C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md",
-    status: 200,
-    statusText: "OK"
-}
 
 const validateMd = [
     {
@@ -70,34 +61,50 @@ const validateMd = [
 
 const noValidate = [
     {
-        href: 'https://nodejs.org/api/path.html',
-        text: 'path',
-        file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\otra\\read.md'
+      href: 'https://nodejs.org/api',
+      text: 'fs',
+      file: 'directorio\\otra\\read.md'
     },
     {
-        href: 'https://nodejs.org/api',
-        path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\otra\\read.md',
-        text: 'fs'
+      href: 'https://nodejs.org/api/path.html',
+      text: 'path',
+      file: 'directorio\\otra\\read.md'
     },
     {
-        href: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions',
-        path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
-        text: '(parámetros | argumentos | valor de retorno)'
+      href: 'https://www.npmjs.com/',
+      text: 'npm',
+      file: 'directorio\\otra\\read.md'
     },
     {
-        href: ' https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export',
-        path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
-        text: 'export'
+      href: 'https://nodejs.org/docs/latest-v0.10.x/api/modules.html',
+      text: '(CommonJS)',
+      file: 'directorio\\otra\\read.md'
+    },
+    {
+      href: 'https://docs.npmjs.com/files/pack',
+      text: 'Configuración de package.json.',
+      file: 'directorio\\otra\\read.md'
+    },
+    {
+      href: 'https://docs.npmjs.com/misc/scripts',
+      text: 'Configuración de npm-scripts',
+      file: 'directorio\\otra\\read.md'
     }
-]
+  ]
+
+
+
+
+
+
+
 
 const mocks = {
     arrayMd,
-    directorioArray, 
-    objetoFail, 
-    objetoOk, 
     validateMd, 
-    noValidate
+    noValidate,
+    checkLinksResponse,
+    checkLinksResponseFail
 }
 
 module.exports= mocks  

@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/Vaneluuq/BOG002-md-links#readme",
   "devDependencies": {
+    "babel-jest": "^27.0.6",
     "eslint": "^7.29.0",
     "gh-pages": "^3.2.3",
     "jest": "^27.0.6"

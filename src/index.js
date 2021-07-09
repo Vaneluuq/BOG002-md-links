@@ -3,7 +3,6 @@ const fs = require('fs');
 const markdownLinkExtractor = require('markdown-link-extractor');
 const axios = require("axios");
 
-
 // Se verifica si la ruta es abosluta o relativa
 let absolutePathFunction = (pathUser) => (path.isAbsolute(pathUser) ? pathUser : path.resolve(pathUser));
 
@@ -26,10 +25,9 @@ let readFiles = (pathAbsolute) => {
        arrayMdFiles = arrayMdFiles.concat(allFilesMd);
       });
    };
-  return arrayMdFiles;
+   return arrayMdFiles;
 };
 
-// console.log(readFiles('directorio\\otra\\read.md'))
 // se obtienen los links de el archivo(s) .md y su data(href, text, route) 
   const getLinks = (pathMd) => {
     let objLinks = [];
@@ -98,7 +96,9 @@ module.exports= { mdLinks,
 
 
 
-
+// let cutText = (text, maxlength) => {
+// return (text>maxlength) ? text.slice(0, maxlength-1) + '...' : text
+// }
 
 
 
