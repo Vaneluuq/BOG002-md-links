@@ -43,7 +43,6 @@ let readFiles = (pathAbsolute) => {
      });
     return objLinks;
   };
-   
 
 //Se genera un promesa mediante la cual se verifica el estado de los links 
 const checkLinks = (arrayLink) => {

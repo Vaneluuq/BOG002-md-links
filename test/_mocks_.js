@@ -9,6 +9,7 @@ const arrayMd = [
         '* [ ] Creación de modules. [(CommonJS)](https://nodejs.org/docs/latest-v0.10.x/api/modules.html)\r\n' +
         '* [ ] [Configuración de package.json.](https://docs.npmjs.com/files/pack)\r\n' +
         '* [ ] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)\r\n' +
+        '* [ ] [Configuración de npm-scripts](https://docs.npmjs.com/misc/scripts)\r\n' +
         '* [ ] Uso de CLI (Command Line Interface - Interfaz de Línea de Comando)\r\n',
       route: 'directorio\\otra\\read.md'
     }
@@ -59,6 +60,37 @@ const validateMd = [
     }
 ]
 
+const validateMdStats = [
+  {
+      href: 'https://nodejs.org/api/path.html',
+      text: 'path',
+      file: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\otra\\read.md',
+      status: 200,
+      statusText: 'OK'
+  },
+  {
+      href: 'https://nodejs.org/api',
+      path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\otra\\read.md',
+      text: 'fs',
+      status: 200,
+      Check: 'OK'
+  },
+  {
+      href: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Func',
+      path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
+      text: '(parámetros | argumentos | valor de retorno)',
+      status: 404,
+      Check: 'FAIL'
+  },
+  {
+      href: ' https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/ex',
+      path: 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md',
+      text: 'export',
+      status: 404,
+      Check: 'FAIL'
+  }
+]
+
 const noValidate = [
     {
       href: 'https://nodejs.org/api',
@@ -89,13 +121,13 @@ const noValidate = [
       href: 'https://docs.npmjs.com/misc/scripts',
       text: 'Configuración de npm-scripts',
       file: 'directorio\\otra\\read.md'
+    },
+    {
+      href: 'https://docs.npmjs.com/misc/scripts',
+      text: 'Configuración de npm-scripts',
+      file: 'directorio\\otra\\read.md'
     }
   ]
-
-
-
-
-
 
 
 
@@ -104,7 +136,8 @@ const mocks = {
     validateMd, 
     noValidate,
     checkLinksResponse,
-    checkLinksResponseFail
+    checkLinksResponseFail,
+    validateMdStats
 }
 
 module.exports= mocks  
