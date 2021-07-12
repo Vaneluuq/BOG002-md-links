@@ -75,6 +75,19 @@ describe('mdLinks', () => {
   test('deberia ser una funcion', () => {
     expect(typeof mdLinks).toBe("function")
   });
+
+  test('Lanza error si el path no existe', () => {
+    const pathPrueba = 'https://nodejs.org/api/pat';
+    expect(Promise.reject(mdLinks(pathPrueba, { validate: false }))).rejects.toThrow('path does not exist');
+  });
+  test("deberia retornar un array de objetos con {href, file, text}", () => {
+    const pathPrueba = 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md';
+    expect(mdLinks(pathPrueba, { validate: false })).resolves.toBe(mocks.noValidate)
+  })
+  test("deberia retornar un array de objetos con {href, file, text, status, testStaus}", () => {
+    const pathPrueba = 'C:\\Users\\Asus\\Documents\\LABORATORIA\\BOG002-md-links\\directorio\\lol.md';
+    expect(mdLinks(pathPrueba, { validate: true })).resolves.toBe(mocks.validateMd)
+  })
 });
 
 
