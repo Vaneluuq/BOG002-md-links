@@ -22,7 +22,7 @@ const cli = (path, options) => {
   const style1 = chalk.bold.italic.cyan
   const style2 = chalk.bold.white
   const style3 = chalk.cyan.bold
-//el usuario desea validar y obtener estadisticas 
+//el usuario desea validar se observa {href, text, file, status y textStatus} y estadisticas 
   if(validate && stats){
     mdLinks(path, { validate: true })
     .then((response)=> { 
@@ -30,7 +30,7 @@ const cli = (path, options) => {
       console.table(stats);
     });
   };
-  //el usuario desea solo obtener estadisticas 
+  //el usuario desea solo obtener estadisticas y se muestran solo {href, text & file}
    if(!validate && stats){
     mdLinks(path, { validate: false})
     .then((response)=> { 
@@ -47,7 +47,7 @@ const cli = (path, options) => {
       console.log(`${style3('file:')} ${style2(element.file)}`) 
       });
     });
-  // el usuario desea solo validar 
+  // el usuario desea solo validar {href, text, file, status y textStatus}
   } else{
     mdLinks(path, { validate: true })
     .then((links)=> { links.forEach(element => { 
@@ -76,7 +76,8 @@ program.parse(args)
 
 
 
-
+//instalable 
+//pregunta el porque no se muestra la dat cuando le 
 
 
 

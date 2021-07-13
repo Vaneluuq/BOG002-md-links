@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "md-links busca validar los links en archivos markdown",
   "main": "src/index.js",
-  "bin": {
-    "md-links": "bin/cli.js"
-  },
   "directories": {
     "test": "test"
   },
@@ -25,6 +22,9 @@
   ],
   "author": "Vanessa Zuñiga <bersiva@gmail.com>",
   "license": "ISC",
+  "bin": {
+    "md-links": "./bin/cli.js"
+  },
   "bugs": {
     "url": "https://github.com/Vaneluuq/BOG002-md-links/issues"
   },
