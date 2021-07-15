@@ -1,5 +1,5 @@
 {
-  "name": "@vaneluuq/md-links",
+  "name": "@vaneluuq/mdlinksvane",
   "version": "0.1.0",
   "description": "md-links busca validar los links en archivos markdown",
   "main": "src/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vaneluuq/BOG002-md-links.git"
+    "url": "git://github.com/Vaneluuq/BOG002-md-links.git"
   },
   "keywords": [
     "markdown",
