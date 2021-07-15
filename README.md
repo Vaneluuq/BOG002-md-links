@@ -7,8 +7,16 @@ asi como el total de links unicos dentro del archivo(s).
 
 ## instalacion 
 
+Puedes instalarlo a través de la linea de comando:
 
+```sh
+npm install @vaneluuq/mdlinksvane@0.1.0
+```
+ó instalarlo via package.json:
 
+```sh
+"@vaneluuq/mdlinksvane": "0.1.0"
+```
 
 ## uso 
 
