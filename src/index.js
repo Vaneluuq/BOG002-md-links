@@ -6,6 +6,7 @@ const axios = require("axios");
 // Se verifica si la ruta es abosluta o relativa
 let absolutePathFunction = (pathUser) => (path.isAbsolute(pathUser) ? pathUser : path.resolve(pathUser));
 
+
 // Se lee el documento md primero identificando si es un archivo o un directorio
 let readFiles = (pathAbsolute) => {
   let arrayMdFiles = [];
